@@ -1,0 +1,21 @@
+{
+  "name": "yus-cli-template-miniapp",
+  "version": "1.0.0",
+  "description": "A template devoted to developing wechat or alipay mini-app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "yus-cli": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CN-kicoyu/yus-cli-template-miniapp.git"
+  },
+  "author": "kicoyu < kicoyu@126.com >",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CN-kicoyu/yus-cli-template-miniapp/issues"
+  },
+  "homepage": "https://github.com/CN-kicoyu/yus-cli-template-miniapp#readme"
+}

@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index", 
+    "pages/logs/logs"
+  ],
+  "window": {
+    {{#if_eq miniapp 'wechat'}}
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+    {{/if_eq}}
+    {{#if_eq miniapp 'alipay'}}
+    "defaultTitle": "Todo App"
+    {{/if_eq}}
+  }
+}

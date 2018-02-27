@@ -1,0 +1,93 @@
+<template>
+{{#if_eq miniapp "wechat"}}
+  <view class="container log-list">
+    <block wx:for="{{logs}}" wx:for-item="log">
+      <text class="log-item">{{index + 1}}. {{log}}</text>
+    </block>
+  </view>
+{{/if_eq}}
+{{#if_eq miniapp "alipay"}}
+  <view class="page-add-todo">
+    <view class="add-todo">
+      <input 
+        class="add-todo-input"
+        placeholder="What needs to be done?"
+        onBlur="onBlur"
+        value="{{inputValue}}"
+      />
+      <button onTap="add">Add</button>
+    </view>
+  </view>
+{{/if_eq}}
+</template>
+
+<script>
+{{#if_eq miniapp "wechat"}}
+const util = require('../../utils/util.js')
+
+Page({
+  data: {
+    logs: []
+  },
+  onLoad: function () {
+    this.setData({
+      logs: (wx.getStorageSync('logs') || []).map(log => {
+        return util.formatTime(new Date(log))
+      })
+    })
+  }
+})
+{{/if_eq}}
+{{#if_eq miniapp "alipay"}}
+const app = getApp();
+
+Page({
+  data: {
+    inputValue: '',
+  },
+  onBlur(e) {
+    this.setData({
+      inputValue: e.detail.value,
+    });
+  },
+  add() {
+    app.todos = app.todos.concat([{
+      text: this.data.inputValue,
+      compeleted: false,
+    }]);
+
+    my.navigateBack();
+  },
+});
+{{/if_eq}}
+</script>
+<style lang="scss">
+{{#if_eq miniapp "wechat"}}
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+  .log-item {
+    margin: 10rpx;
+  }
+}
+{{/if_eq}}
+{{#if_eq miniapp "alipay"}}
+.page-add-todo {
+  flex: 1;
+}
+
+.add-todo {
+  height: 200px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-todo-input {
+  font-size: 20px;
+  padding: 10px;
+}
+{{/if_eq}}
+</style>
