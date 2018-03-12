@@ -14,7 +14,7 @@
   </view>
 {{/if_eq}}
 
-{{#if_eq miniapp "alipay"}}
+{{#unless_eq miniapp "wechat"}}
   <view class="page-todos">
     <view class="user">
       <image class="avatar" src="{{user.avatar}}" background-size="cover"></image>
@@ -32,7 +32,7 @@
       </view>
     </view>
   </view>
-{{/if_eq}}
+{{/unless_eq}}
 </template>
 
 <script>
@@ -92,7 +92,7 @@ Page({
 })
 {{/if_eq}}
 
-{{#if_eq miniapp "alipay"}}
+{{#unless_eq miniapp "wechat"}}
 const app = getApp();
 
 Page({
@@ -119,7 +119,7 @@ Page({
     my.navigateTo({ url: '../logs/logs' });
   },
 });
-{{/if_eq}}
+{{/unless_eq}}
 </script>
 
 <style>
@@ -146,7 +146,7 @@ Page({
 }
 {{/if_eq}}
 
-{{#if_eq miniapp "alipay"}}
+{{#unless_eq miniapp "wechat"}}
 .page-todos {
   flex: 1;
   display: flex;
@@ -189,5 +189,5 @@ Page({
 .todo-item {
   margin-bottom: 15px;
 }
-{{/if_eq}}
+{{/unless_eq}}
 </style>
