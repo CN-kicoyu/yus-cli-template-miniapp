@@ -23,8 +23,8 @@
     <view class="todo-items">
       <checkbox-group class="todo-items-group" onChange="onTodoChanged">
         <label class="todo-item" a:for="{{todos}}">
-          <checkbox value="{{item.text}}" checked="{{item.completed}}" />
-          <text class="{{item.completed ? 'checked' : ''}}">{{item.text}}</text>
+          <checkbox value="{{item.text}}" checked="\{{item.completed}}" />
+          <text class="\{{item.completed ? 'checked' : ''}}">{{item.text}}</text>
         </label>
       </checkbox-group>
       <view class="todo-item">
