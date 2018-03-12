@@ -62,7 +62,7 @@ module.exports = {
   },
   complete: function(data, { chalk }) {
     console.log("miniapp")
-    console.log(miniapp)
+    console.log(data)
     const green = chalk.green
 
     sortDependencies(data, green)
