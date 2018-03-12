@@ -13,6 +13,7 @@
     </view>
   </view>
 {{/if_eq}}
+
 {{#if_eq miniapp "alipay"}}
   <view class="page-todos">
     <view class="user">
@@ -90,6 +91,7 @@ Page({
   }
 })
 {{/if_eq}}
+
 {{#if_eq miniapp "alipay"}}
 const app = getApp();
 
@@ -143,6 +145,7 @@ Page({
   margin-top: 200px;
 }
 {{/if_eq}}
+
 {{#if_eq miniapp "alipay"}}
 .page-todos {
   flex: 1;

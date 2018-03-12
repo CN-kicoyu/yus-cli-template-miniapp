@@ -61,6 +61,8 @@ module.exports = {
     'src/.eslintrc': "miniapp === 'alipay'"
   },
   complete: function(data, { chalk }) {
+    console.log("miniapp")
+    console.log(miniapp)
     const green = chalk.green
 
     sortDependencies(data, green)
