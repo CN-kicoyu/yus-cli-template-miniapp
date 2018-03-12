@@ -57,8 +57,8 @@ module.exports = {
     }
   },
   filters: {
-    'src/project.config.json': "miniapp === 'alipay'",
-    'src/.eslintrc': "miniapp === 'wechat'"
+    'src/project.config.json': "miniapp === 'wechat'",
+    'src/.eslintrc': "miniapp === 'alipay'"
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
