@@ -37,157 +37,157 @@
 
 <script>
 {{#if_eq miniapp "wechat"}}
-//获取应用实例
-const app = getApp()
+  //获取应用实例
+  const app = getApp()
 
-Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+  Page({
+    data: {
+      motto: 'Hello World',
+      userInfo: {},
+      hasUserInfo: false,
+      canIUse: wx.canIUse('button.open-type.getUserInfo')
+    },
+    //事件处理函数
+    bindViewTap: function() {
+      wx.navigateTo({
+        url: '../logs/logs'
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+    },
+    onLoad: function () {
+      if (app.globalData.userInfo) {
         this.setData({
-          userInfo: res.userInfo,
+          userInfo: app.globalData.userInfo,
           hasUserInfo: true
         })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
+      } else if (this.data.canIUse){
+        // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+        // 所以此处加入 callback 以防止这种情况
+        app.userInfoReadyCallback = res => {
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
         }
+      } else {
+        // 在没有 open-type=getUserInfo 版本的兼容处理
+        wx.getUserInfo({
+          success: res => {
+            app.globalData.userInfo = res.userInfo
+            this.setData({
+              userInfo: res.userInfo,
+              hasUserInfo: true
+            })
+          }
+        })
+      }
+    },
+    getUserInfo: function(e) {
+      console.log(e)
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
       })
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
-})
+  })
 {{/if_eq}}
 
 {{#unless_eq miniapp "wechat"}}
-const app = getApp();
+  const app = getApp();
 
-Page({
-  data: {},
-  onLoad() {
-    app.getUserInfo().then(
-      user => this.setData({
-        user,
-      }),
-    );
-  },
-  onShow() {
-    this.setData({ todos: app.todos });
-  },
-  onTodoChanged(e) {
-    const checkedTodos = e.detail.value;
-    app.todos = app.todos.map(todo => ({
-      ...todo,
-      completed: checkedTodos.indexOf(todo.text) > -1,
-    }));
-    this.setData({ todos: app.todos });
-  },
-  addTodo() {
-    my.navigateTo({ url: '../logs/logs' });
-  },
-});
+  Page({
+    data: {},
+    onLoad() {
+      app.getUserInfo().then(
+        user => this.setData({
+          user,
+        }),
+      );
+    },
+    onShow() {
+      this.setData({ todos: app.todos });
+    },
+    onTodoChanged(e) {
+      const checkedTodos = e.detail.value;
+      app.todos = app.todos.map(todo => ({
+        ...todo,
+        completed: checkedTodos.indexOf(todo.text) > -1,
+      }));
+      this.setData({ todos: app.todos });
+    },
+    addTodo() {
+      my.navigateTo({ url: '../logs/logs' });
+    },
+  });
 {{/unless_eq}}
 </script>
 
 <style>
 {{#if_eq miniapp "wechat"}}
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
 
-.userinfo-nickname {
-  color: #aaa;
-}
+  .userinfo-nickname {
+    color: #aaa;
+  }
 
-.usermotto {
-  margin-top: 200px;
-}
+  .usermotto {
+    margin-top: 200px;
+  }
 {{/if_eq}}
 
 {{#unless_eq miniapp "wechat"}}
-.page-todos {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+  .page-todos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-.user {
-  display: flex;
-  padding: 30px 30px 0 30px;
-}
+  .user {
+    display: flex;
+    padding: 30px 30px 0 30px;
+  }
 
-.avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin-right: 40rpx;
-  border-radius: 50%;
-}
+  .avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin-right: 40rpx;
+    border-radius: 50%;
+  }
 
-.nickname {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 40rpx;
-}
+  .nickname {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 40rpx;
+  }
 
-.todo-items {
-  padding: 80rpx;
-}
+  .todo-items {
+    padding: 80rpx;
+  }
 
-.todo-items-group {
-  display: flex;
-  flex-direction: column;
-}
+  .todo-items-group {
+    display: flex;
+    flex-direction: column;
+  }
 
-.checked {
-  color: #d9d9d9;
-  text-decoration: line-through;
-}
+  .checked {
+    color: #d9d9d9;
+    text-decoration: line-through;
+  }
 
-.todo-item {
-  margin-bottom: 15px;
-}
+  .todo-item {
+    margin-bottom: 15px;
+  }
 {{/unless_eq}}
 </style>
