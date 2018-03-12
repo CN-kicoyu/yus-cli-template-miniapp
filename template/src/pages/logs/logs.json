@@ -1,3 +1,3 @@
 {
-  {{#if_wechat miniapp}}"navigationBarTitleText": "查看启动日志"{{/if_wechat}}
+  {{#if_eq miniapp "wechat"}}"navigationBarTitleText": "查看启动日志"{{/if_eq}}
 }
